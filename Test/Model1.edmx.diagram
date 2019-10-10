@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc401e0b18e7478eb4d78fa37db5de64" Name="Diagram1" >
-        <EntityTypeShape EntityType="Model1.Books" Width="1.5" PointX="8" PointY="1.125" />
-        <EntityTypeShape EntityType="Model1.Author" Width="1.5" PointX="1.75" PointY="1.125" />
-        <EntityTypeShape EntityType="Model1.AuthorBooks" Width="1.5" PointX="4.625" PointY="0.875" />
-        <AssociationConnector Association="Model1.Entity1Author" />
-        <AssociationConnector Association="Model1.BooksEntity1" />
+      <Diagram DiagramId="7cff8ba5f1c54ba496efae39c3da2ecb" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.Books" Width="1.5" PointX="5.75" PointY="1.25" />
+        <EntityTypeShape EntityType="Model1.BookAuthor" Width="1.5" PointX="3.125" PointY="1.75" />
+        <EntityTypeShape EntityType="Model1.Author" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="Model1.BooksEntity2" />
+        <AssociationConnector Association="Model1.Entity3Entity2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
