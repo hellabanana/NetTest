@@ -41,28 +41,36 @@ namespace Test
         {
             Console.WriteLine("Введите имя книги:");
             string _nm = Console.ReadLine();
-            Console.WriteLine("Введите год:");
-            if (int.TryParse(Console.ReadLine(), out int _year))
-            { 
-                connection.BooksSet.Add(new Books() { Name = _nm, Year = _year });
-                connection.SaveChanges();
-                Console.WriteLine("Введите номера авторов через запятую");
-                foreach (Author item in connection.AuthorSet)
+            if (_nm.Length <= 30)
+            {
+                Console.WriteLine("Введите год:");
+                if (int.TryParse(Console.ReadLine(), out int _year))
                 {
-                    Console.WriteLine(item.Id_author + "." + item.Name);
+                    connection.BooksSet.Add(new Books() { Name = _nm, Year = _year });
+                    connection.SaveChanges();
+                    Console.WriteLine("Введите номера авторов через запятую");
+                    foreach (Author item in connection.AuthorSet)
+                    {
+                        Console.WriteLine(item.Id_author + "." + item.Name);
+                    }
+                    string[] aut = Console.ReadLine().Split(',');
+                    foreach (string item in aut)
+                    {
+                        int bokId = connection.BooksSet.Select(x => x.Id_book).Max();
+                        connection.BookAuthorSet.Add(new BookAuthor() { Id_author = int.Parse(item), Id_book = bokId});
+
+                    }
+                    connection.SaveChanges();
                 }
-
-                string[] aut = Console.ReadLine().Split(',');
-
-                foreach (string item in aut)
-                {
-                    int bokId = connection.BooksSet.Select(x => x.Id_book).Max();
-                    connection.BookAuthorSet.Add(new BookAuthor() { Id_author = int.Parse(item), Id_book = bokId });
-
-                }
-                connection.SaveChanges();
+                else Console.WriteLine("Введено неверное значение");
             }
-            else Console.WriteLine("Введено неверное значение");
+            else
+            {
+                Console.WriteLine("Имя книги больше 30 символов");
+                Console.WriteLine();
+                BookAdd();
+
+            }
         }
 
         private static void DeleteBook()
@@ -167,9 +175,19 @@ namespace Test
         private static void AuthorAdd()
         {
             Console.WriteLine("Введите имя автора:");
-            connection.AuthorSet.Add(new Author() { Name = Console.ReadLine() });
-            connection.SaveChanges();
-            Console.WriteLine();
+            var _nm = Console.ReadLine();
+            if (_nm.Length <= 20)
+            {
+                connection.AuthorSet.Add(new Author() { Name = _nm });
+                connection.SaveChanges();
+                Console.WriteLine();
+            }
+            else {
+                Console.WriteLine("Фамилия больше 20 символов");
+                Console.WriteLine();
+                AuthorAdd();
+                }   
+        
         }
 
     }

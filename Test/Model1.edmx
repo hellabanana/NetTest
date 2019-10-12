@@ -31,8 +31,8 @@
       <PropertyRef Name="Id_book" />
       <PropertyRef Name="Id_author" />
     </Key>
-    <Property Name="Id_book" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Id_author" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_book" Type="int" Nullable="false" />
+    <Property Name="Id_author" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AuthorSet">
     <Key>
@@ -96,8 +96,8 @@
             <PropertyRef Name="Id_book" />
             <PropertyRef Name="Id_author" />
           </Key>
-          <Property Name="Id_book" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id_author" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_book" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Id_author" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <NavigationProperty Name="Books" Relationship="Model1.BooksEntity2" FromRole="Entity2" ToRole="Books" />
           <NavigationProperty Name="Entity3" Relationship="Model1.Entity3Entity2" FromRole="Entity2" ToRole="Entity3" />
         </EntityType>

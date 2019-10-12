@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/10/2019 19:51:25
+-- Date Created: 10/12/2019 14:41:37
 -- Generated from EDMX file: A:\Учеба\C#\Projects\Test\Test\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [books];
+USE [bk];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -52,8 +52,8 @@ GO
 
 -- Creating table 'BookAuthorSet'
 CREATE TABLE [dbo].[BookAuthorSet] (
-    [Id_book] int IDENTITY(1,1) NOT NULL,
-    [Id_author] int IDENTITY(1,1) NOT NULL
+    [Id_book] int  NOT NULL,
+    [Id_author] int  NOT NULL
 );
 GO
 
