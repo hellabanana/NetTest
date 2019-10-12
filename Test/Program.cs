@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.EntityClient;
-using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test
 {
@@ -15,13 +9,10 @@ namespace Test
 
         static void Main(string[] args)
         {
-           // EntityConnectionStringBuilder entityConnectionStringBuilder = new EntityConnectionStringBuilder();
-           // entityConnectionStringBuilder.ConnectionString = $"metadata = res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "books.mdf")};Integrated Security=True;Connect Timeout=30";
             connection = new Model1Container1();
-        
-          
             while (true)
             {
+                Console.WriteLine("Меню");
                 Console.WriteLine("1.Добавить книгу");
                 Console.WriteLine("2.Добавить автора");
                 Console.WriteLine("3.Вывести книги");
@@ -102,19 +93,19 @@ namespace Test
 
                 }
                 Console.WriteLine();
-                Console.WriteLine("Выберите номер автора для поиска:");
+                Console.WriteLine("Выберите номер автора для поиска");
                 if (int.TryParse(Console.ReadLine(), out int _idAuthor))
                 {
 
                     var res = connection.BookAuthorSet.Where(x => x.Id_author == _idAuthor).Select(f => f.Id_book);
-                    var names = connection.BooksSet.Join(res, // второй набор
-        p => p.Id_book, // свойство-селектор объекта из первого набора
-        c => c, // свойство-селектор объекта из второго набора
-        (p, c) => new // результат
-        {
-            Name = p.Name
+                    var names = connection.BooksSet.Join(res, 
+                                                        p => p.Id_book, 
+                                                        c => c, 
+                                                        (p, c) => new 
+                                                        {
+                                                            Name = p.Name
 
-        });
+                                                        });
 
                     foreach (var authorEntity in names)
                     {
@@ -123,6 +114,7 @@ namespace Test
 
                 }
                 else Console.WriteLine("Записей нет!");
+                Console.WriteLine();
             }
         }
 
@@ -132,7 +124,7 @@ namespace Test
             {
                 foreach (var item in connection.AuthorSet)
                 {
-                    Console.WriteLine(item.Id_author + "." + item.Name); //A:\УЧЕБА\C#\PROJECTS\TEST\TEST\
+                    Console.WriteLine(item.Id_author + "." + item.Name); 
 
                 }
                 Console.WriteLine();
